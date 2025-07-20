@@ -1,0 +1,430 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: #2a2a2a;
+  height: 100vh;
+  overflow: hidden;
+}
+
+/* Container principal avec ratio mobile */
+.app-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: #2a2a2a;
+}
+
+.mobile-frame {
+  width: 100%;
+  max-width: 375px;
+  height: 100vh;
+  max-height: 812px;
+  background-color: #f5f5f5;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  padding: 15px 16px 12px; /* Réduit de 20px 16px 16px */
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.settings-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+  position: relative;
+  z-index: 10;
+}
+
+.settings-icon {
+  display: block;
+  pointer-events: none;
+}
+
+.settings-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.header h1 {
+  flex: 1;
+  text-align: center;
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin-left: -36px; /* Compenser le bouton paramètres */
+}
+
+/* Section total */
+.total-section {
+  padding: 16px 16px; /* Réduit de 20px 16px */
+  background-color: #fff;
+  text-align: center;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.total-primary {
+  font-size: 26px; /* Réduit de 28px */
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 2px; /* Réduit de 4px */
+}
+
+.total-primary.over-budget {
+  color: #e74c3c;
+}
+
+.total-secondary {
+  font-size: 15px; /* Réduit de 16px */
+  color: #666;
+}
+
+.budget-warning {
+  font-size: 12px;
+  color: #e74c3c;
+  margin-top: 8px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.budget-warning-line {
+  margin-bottom: 2px;
+}
+
+/* Section historique */
+.history-section {
+  flex: 1;
+  padding: 16px;
+  overflow-y: auto;
+  background-color: #f8f9fa;
+}
+
+.history-placeholder {
+  text-align: center;
+  color: #999;
+  font-style: italic;
+  margin-top: 40px;
+}
+
+.history-item {
+  background-color: #fff;
+  padding: 10px 14px; /* Réduit de 12px 16px */
+  margin-bottom: 6px; /* Réduit de 8px */
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.history-content {
+  flex: 1;
+}
+
+.history-primary {
+  font-size: 16px;
+  font-weight: 600; /* Augmenté de 500 pour plus de contraste */
+  color: #333;
+  margin-bottom: 2px;
+}
+
+.history-secondary {
+  font-size: 13px; /* Réduit de 14px */
+  color: #888; /* Plus clair que #666 */
+  font-weight: 400;
+}
+
+.delete-item-btn {
+  background-color: #ff6b6b;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  width: 30px; /* Réduit de 32px */
+  height: 30px; /* Réduit de 32px */
+  font-size: 13px; /* Réduit de 14px */
+  cursor: pointer;
+  transition: background-color 0.2s;
+  flex-shrink: 0;
+  margin-left: 10px; /* Réduit de 12px */
+}
+
+.delete-item-btn:hover {
+  background-color: #ff5252;
+}
+
+/* Section saisie */
+.input-section {
+  padding: 8px 16px; /* Réduit de 12px 16px */
+  background-color: #fff;
+  border-top: 1px solid #e0e0e0;
+}
+
+.input-display {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2px; /* Réduit de 4px */
+}
+
+.input-field {
+  flex: 1;
+  font-size: 22px; /* Réduit de 24px */
+  font-weight: 500;
+  border: none;
+  outline: none;
+  text-align: right;
+  padding: 6px 0; /* Réduit de 8px 0 */
+  background: transparent;
+  color: #333;
+}
+
+.currency-label {
+  font-size: 16px; /* Réduit de 18px */
+  color: #666;
+  margin-left: 8px;
+  font-weight: 500;
+}
+
+.converted-display {
+  text-align: right;
+  font-size: 13px; /* Réduit de 14px */
+  color: #666;
+  padding: 1px 0; /* Réduit de 2px 0 */
+  margin-bottom: 6px; /* Réduit de 8px */
+}
+
+/* Clavier virtuel */
+.keyboard {
+  padding: 8px 16px 12px; /* Réduit de 12px 16px 16px */
+  background-color: #fff;
+  border-top: 1px solid #e0e0e0;
+}
+
+.keyboard-row {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 5px; /* Réduit de 6px */
+}
+
+.keyboard-row:last-child {
+  margin-bottom: 0;
+}
+
+.key {
+  flex: 1;
+  height: 42px; /* Réduit de 45px */
+  border: none;
+  border-radius: 8px;
+  font-size: 15px; /* Réduit de 16px */
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  user-select: none;
+}
+
+.number-key {
+  background-color: #f8f9fa;
+  color: #333;
+}
+
+.number-key:hover {
+  background-color: #e9ecef;
+}
+
+.number-key:active {
+  background-color: #dee2e6;
+  transform: scale(0.95);
+}
+
+.delete-key {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.delete-key:hover {
+  background-color: #ff5252;
+}
+
+.ok-key {
+  background-color: #4caf50;
+  color: white;
+  font-weight: 600;
+}
+
+.ok-key:hover {
+  background-color: #45a049;
+}
+
+/* Page paramètres */
+.settings-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: none;
+  z-index: 1000;
+}
+
+.settings-overlay.active {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.settings-page {
+  width: 100%;
+  max-width: 375px;
+  height: 100%;
+  max-height: 812px;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 16px 16px;
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.settings-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #333;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: background-color 0.2s;
+}
+
+.close-btn:hover {
+  background-color: #f0f0f0;
+}
+
+.settings-content {
+  flex: 1;
+  padding: 24px 16px;
+}
+
+.setting-group {
+  margin-bottom: 24px;
+}
+
+.setting-group label {
+  display: block;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.setting-group select,
+.setting-group input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: #fff;
+  color: #333;
+}
+
+.setting-group select:focus,
+.setting-group input:focus {
+  outline: none;
+  border-color: #4caf50;
+  box-shadow: 0 0 0 2px rgba(76, 175, 80, 0.2);
+}
+
+.budget-input-group {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.budget-input-group input {
+  flex: 1;
+  border: none;
+  margin: 0;
+  border-radius: 0;
+}
+
+.budget-currency {
+  padding: 12px 16px;
+  background-color: #f8f9fa;
+  color: #666;
+  font-size: 14px;
+  font-weight: 500;
+  border-left: 1px solid #ddd;
+}
+
+/* Responsive pour mobile */
+@media (max-width: 480px) {
+  body {
+    background-color: #f5f5f5;
+  }
+
+  .app-container {
+    background-color: transparent;
+  }
+
+  .mobile-frame {
+    max-width: none;
+    max-height: none;
+    height: 100vh;
+  }
+
+  .settings-page {
+    max-width: none;
+    max-height: none;
+  }
+}
+
+/* Forcer le mode portrait sur mobile */
+@media screen and (orientation: landscape) and (max-width: 768px) {
+  body::before {
+    content: "Veuillez tourner votre appareil en mode portrait";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #333;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    text-align: center;
+    z-index: 9999;
+    padding: 20px;
+  }
+}
