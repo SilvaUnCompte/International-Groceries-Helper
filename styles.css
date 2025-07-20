@@ -11,6 +11,10 @@ body {
   overflow: hidden;
 }
 
+button {
+  touch-action: manipulation;
+}
+
 /* Container principal avec ratio mobile */
 .app-container {
   display: flex;
@@ -36,7 +40,8 @@ body {
 .header {
   display: flex;
   align-items: center;
-  padding: 15px 16px 12px; /* Réduit de 20px 16px 16px */
+  padding: 15px 16px 12px;
+  /* Réduit de 20px 16px 16px */
   background-color: #fff;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   position: relative;
@@ -69,22 +74,26 @@ body {
   font-size: 18px;
   font-weight: 600;
   color: #333;
-  margin-left: -36px; /* Compenser le bouton paramètres */
+  margin-left: -36px;
+  /* Compenser le bouton paramètres */
 }
 
 /* Section total */
 .total-section {
-  padding: 16px 16px; /* Réduit de 20px 16px */
+  padding: 16px 16px;
+  /* Réduit de 20px 16px */
   background-color: #fff;
   text-align: center;
   border-bottom: 1px solid #e0e0e0;
 }
 
 .total-primary {
-  font-size: 26px; /* Réduit de 28px */
+  font-size: 26px;
+  /* Réduit de 28px */
   font-weight: bold;
   color: #333;
-  margin-bottom: 2px; /* Réduit de 4px */
+  margin-bottom: 2px;
+  /* Réduit de 4px */
 }
 
 .total-primary.over-budget {
@@ -92,7 +101,8 @@ body {
 }
 
 .total-secondary {
-  font-size: 15px; /* Réduit de 16px */
+  font-size: 15px;
+  /* Réduit de 16px */
   color: #666;
 }
 
@@ -125,8 +135,10 @@ body {
 
 .history-item {
   background-color: #fff;
-  padding: 10px 14px; /* Réduit de 12px 16px */
-  margin-bottom: 6px; /* Réduit de 8px */
+  padding: 10px 14px;
+  /* Réduit de 12px 16px */
+  margin-bottom: 6px;
+  /* Réduit de 8px */
   border-radius: 8px;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
   display: flex;
@@ -140,14 +152,17 @@ body {
 
 .history-primary {
   font-size: 16px;
-  font-weight: 600; /* Augmenté de 500 pour plus de contraste */
+  font-weight: 600;
+  /* Augmenté de 500 pour plus de contraste */
   color: #333;
   margin-bottom: 2px;
 }
 
 .history-secondary {
-  font-size: 13px; /* Réduit de 14px */
-  color: #888; /* Plus clair que #666 */
+  font-size: 13px;
+  /* Réduit de 14px */
+  color: #888;
+  /* Plus clair que #666 */
   font-weight: 400;
 }
 
@@ -156,13 +171,17 @@ body {
   color: white;
   border: none;
   border-radius: 6px;
-  width: 30px; /* Réduit de 32px */
-  height: 30px; /* Réduit de 32px */
-  font-size: 13px; /* Réduit de 14px */
+  width: 30px;
+  /* Réduit de 32px */
+  height: 30px;
+  /* Réduit de 32px */
+  font-size: 13px;
+  /* Réduit de 14px */
   cursor: pointer;
   transition: background-color 0.2s;
   flex-shrink: 0;
-  margin-left: 10px; /* Réduit de 12px */
+  margin-left: 10px;
+  /* Réduit de 12px */
 }
 
 .delete-item-btn:hover {
@@ -171,7 +190,8 @@ body {
 
 /* Section saisie */
 .input-section {
-  padding: 8px 16px; /* Réduit de 12px 16px */
+  padding: 8px 16px;
+  /* Réduit de 12px 16px */
   background-color: #fff;
   border-top: 1px solid #e0e0e0;
 }
@@ -179,23 +199,27 @@ body {
 .input-display {
   display: flex;
   align-items: center;
-  margin-bottom: 2px; /* Réduit de 4px */
+  margin-bottom: 2px;
+  /* Réduit de 4px */
 }
 
 .input-field {
   flex: 1;
-  font-size: 22px; /* Réduit de 24px */
+  font-size: 22px;
+  /* Réduit de 24px */
   font-weight: 500;
   border: none;
   outline: none;
   text-align: right;
-  padding: 6px 0; /* Réduit de 8px 0 */
+  padding: 6px 0;
+  /* Réduit de 8px 0 */
   background: transparent;
   color: #333;
 }
 
 .currency-label {
-  font-size: 16px; /* Réduit de 18px */
+  font-size: 16px;
+  /* Réduit de 18px */
   color: #666;
   margin-left: 8px;
   font-weight: 500;
@@ -203,15 +227,19 @@ body {
 
 .converted-display {
   text-align: right;
-  font-size: 13px; /* Réduit de 14px */
+  font-size: 13px;
+  /* Réduit de 14px */
   color: #666;
-  padding: 1px 0; /* Réduit de 2px 0 */
-  margin-bottom: 6px; /* Réduit de 8px */
+  padding: 1px 0;
+  /* Réduit de 2px 0 */
+  margin-bottom: 6px;
+  /* Réduit de 8px */
 }
 
 /* Clavier virtuel */
 .keyboard {
-  padding: 8px 16px 12px; /* Réduit de 12px 16px 16px */
+  padding: 8px 16px 12px;
+  /* Réduit de 12px 16px 16px */
   background-color: #fff;
   border-top: 1px solid #e0e0e0;
 }
@@ -219,7 +247,8 @@ body {
 .keyboard-row {
   display: flex;
   gap: 8px;
-  margin-bottom: 5px; /* Réduit de 6px */
+  margin-bottom: 5px;
+  /* Réduit de 6px */
 }
 
 .keyboard-row:last-child {
@@ -228,10 +257,12 @@ body {
 
 .key {
   flex: 1;
-  height: 42px; /* Réduit de 45px */
+  height: 42px;
+  /* Réduit de 45px */
   border: none;
   border-radius: 8px;
-  font-size: 15px; /* Réduit de 16px */
+  font-size: 15px;
+  /* Réduit de 16px */
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;

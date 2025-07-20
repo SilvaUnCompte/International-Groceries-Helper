@@ -18,6 +18,7 @@ class ShoppingCalculator {
     this.bindEvents()
     this.updateDisplay()
     this.updateLanguage()
+    this.updateCurrencyConversion()
   }
 
   initializeElements() {
@@ -49,32 +50,35 @@ class ShoppingCalculator {
   }
 
   bindEvents() {
+    const isTouchDevice = 'ontouchstart' in window;
+    const eventType = isTouchDevice ? 'touchstart' : 'click';
+
     // Clavier virtuel
     this.numberKeys.forEach((key) => {
-      key.addEventListener("click", () => {
+      key.addEventListener(eventType, () => {
         this.handleNumberInput(key.dataset.value)
       })
     })
 
-    this.deleteKey.addEventListener("click", () => {
+    this.deleteKey.addEventListener(eventType, () => {
       this.handleDelete()
     })
 
-    this.okKey.addEventListener("click", () => {
+    this.okKey.addEventListener(eventType, () => {
       this.handleOk()
     })
 
     // Paramètres
-    this.settingsBtn.addEventListener("click", () => {
+    this.settingsBtn.addEventListener(eventType, () => {
       this.openSettings()
     })
 
-    this.closeSettingsBtn.addEventListener("click", () => {
+    this.closeSettingsBtn.addEventListener(eventType, () => {
       this.closeSettings()
     })
 
     // Fermer paramètres en cliquant sur l'overlay
-    this.settingsOverlay.addEventListener("click", (e) => {
+    this.settingsOverlay.addEventListener(eventType, (e) => {
       if (e.target === this.settingsOverlay) {
         this.closeSettings()
       }
