@@ -228,12 +228,9 @@ button {
 .converted-display {
   text-align: right;
   font-size: 13px;
-  /* Réduit de 14px */
   color: #666;
   padding: 1px 0;
-  /* Réduit de 2px 0 */
   margin-bottom: 6px;
-  /* Réduit de 8px */
 }
 
 /* Clavier virtuel */
@@ -248,7 +245,6 @@ button {
   display: flex;
   gap: 8px;
   margin-bottom: 5px;
-  /* Réduit de 6px */
 }
 
 .keyboard-row:last-child {
@@ -257,12 +253,10 @@ button {
 
 .key {
   flex: 1;
-  height: 42px;
-  /* Réduit de 45px */
+  height: 55px;
   border: none;
   border-radius: 8px;
-  font-size: 15px;
-  /* Réduit de 16px */
+  font-size: 16px;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.2s;

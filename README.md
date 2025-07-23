@@ -12,4 +12,4 @@ So I'd rather spend a day creating a web application that does the math for me.
 
 Now I feel stupid every time I think, “Oh my God, $22.95 for a juice?!” But with one finger, I can find out the real price without checking if the conversion rate has changed (Mmf...).
 
-Addendum: feel free to be as lazy as me and install the progressive web app ahah
+Addendum: feel free to be as lazy as me and install the progressive web app [here](https://groceries-helper.oneiricforge.com).
