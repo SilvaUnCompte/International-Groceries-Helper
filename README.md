@@ -17,5 +17,5 @@ Now I feel stupid every time I think, “Oh my God, $22.95 for a juice?!” But 
 
 Addendum: feel free to be as lazy as me and install the progressive web app [here](https://groceries-helper.oneiricforge.com).
 
-
-If you need a new currency, please don't hesitate to ask me.
+_ _
+_If you need a new currency, please don't hesitate to ask me._
