@@ -9,18 +9,34 @@
             <div class="setting-group">
                 <label for="primaryCurrency">Devise initiale</label>
                 <select id="primaryCurrency">
-                    <option value="DKK">DKK - Couronne danoise</option>
+                    <option value="AUD">AUD - Australian Dollar</option>
+                    <option value="CAD">CAD - Canadian Dollar</option>
+                    <option value="CHF">CHF - Swiss Franc</option>
+                    <option value="CNH">CNH - Chinese Yuan (offshore)</option>
+                    <option value="DKK">DKK - Danish Krone</option>
                     <option value="EUR">EUR - Euro</option>
-                    <option value="USD">USD - Dollar américain</option>
+                    <option value="GBP">GBP - Pound Sterling</option>
+                    <option value="JPY">JPY - Japanese Yen</option>
+                    <option value="NZD">NZD - New Zealand Dollar</option>
+                    <option value="SEK">SEK - Swedish Krona</option>
+                    <option value="USD">USD - US Dollar</option>
                 </select>
             </div>
 
             <div class="setting-group">
                 <label for="secondaryCurrency">Devise à convertir</label>
                 <select id="secondaryCurrency">
+                    <option value="AUD">AUD - Australian Dollar</option>
+                    <option value="CAD">CAD - Canadian Dollar</option>
+                    <option value="CHF">CHF - Swiss Franc</option>
+                    <option value="CNH">CNH - Chinese Yuan (offshore)</option>
+                    <option value="DKK">DKK - Danish Krone</option>
                     <option value="EUR">EUR - Euro</option>
-                    <option value="DKK">DKK - Couronne danoise</option>
-                    <option value="USD">USD - Dollar américain</option>
+                    <option value="GBP">GBP - Pound Sterling</option>
+                    <option value="JPY">JPY - Japanese Yen</option>
+                    <option value="NZD">NZD - New Zealand Dollar</option>
+                    <option value="SEK">SEK - Swedish Krona</option>
+                    <option value="USD">USD - US Dollar</option>
                 </select>
             </div>
 
