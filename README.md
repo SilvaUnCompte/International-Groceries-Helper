@@ -2,6 +2,7 @@
 A useful little website for converting currencies when shopping for groceries in another country.
 This is a simplified calculator with currency conversion based on real-time exchange rates.
 > https://groceries-helper.oneiricforge.com
+
 If the “validate” button does not appear, download the progressive web app (PWA).
 
 ## Why?
