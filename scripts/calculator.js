@@ -22,30 +22,30 @@ class ShoppingCalculator {
   }
 
   initializeElements() {
-    // Éléments principaux
+    // Main elements
     this.inputField = document.getElementById("inputField")
     this.convertedValue = document.getElementById("convertedValue")
     this.totalPrimary = document.getElementById("totalPrimary")
     this.totalSecondary = document.getElementById("totalSecondary")
     this.historySection = document.getElementById("historySection")
 
-    // Boutons
+    // Buttons
     this.settingsBtn = document.getElementById("settingsBtn")
     this.closeSettingsBtn = document.getElementById("closeSettingsBtn")
     this.deleteKey = document.getElementById("deleteKey")
     this.okKey = document.getElementById("okKey")
 
-    // Overlay paramètres
+    // Settings overlay
     this.settingsOverlay = document.getElementById("settingsOverlay")
 
-    // Paramètres
+    // Settings
     this.primaryCurrencySelect = document.getElementById("primaryCurrency")
     this.secondaryCurrencySelect = document.getElementById("secondaryCurrency")
     this.budgetLimitInput = document.getElementById("budgetLimit")
     this.budgetCurrency = document.getElementById("budgetCurrency")
     this.languageSelect = document.getElementById("language")
 
-    // Touches numériques
+    // Virtual keyboard
     this.numberKeys = document.querySelectorAll(".number-key")
   }
 
@@ -53,7 +53,7 @@ class ShoppingCalculator {
     const isTouchDevice = 'ontouchstart' in window;
     const eventType = isTouchDevice ? 'touchstart' : 'click';
 
-    // Clavier virtuel
+    // Virtual keyboard
     this.numberKeys.forEach((key) => {
       key.addEventListener(eventType, () => {
         this.handleNumberInput(key.dataset.value)
@@ -68,7 +68,7 @@ class ShoppingCalculator {
       this.handleOk()
     })
 
-    // Paramètres
+    // Settings
     this.settingsBtn.addEventListener(eventType, () => {
       this.openSettings()
     })
@@ -77,14 +77,14 @@ class ShoppingCalculator {
       this.closeSettings()
     })
 
-    // Fermer paramètres en cliquant sur l'overlay
+    // Close settings by clicking on the overlay
     this.settingsOverlay.addEventListener(eventType, (e) => {
       if (e.target === this.settingsOverlay) {
         this.closeSettings()
       }
     })
 
-    // Changements de paramètres
+    // Settings changes
     this.primaryCurrencySelect.addEventListener("change", () => {
       this.primaryCurrency = this.primaryCurrencySelect.value
       this.updateDisplay()
@@ -111,7 +111,7 @@ class ShoppingCalculator {
       setCookie("language", this.language)
     })
 
-    // Clavier physique (pc)
+    // Physical keyboard (PC)
     document.addEventListener("keydown", (e) => {
       if (this.settingsOverlay.classList.contains("active")) return
 
@@ -128,7 +128,7 @@ class ShoppingCalculator {
   }
 
   updateCurrencyConversion() {
-    // Si les devises sont identiques, pas besoin de conversion
+    // If the currencies are identical, no need for conversion
     if (this.primaryCurrency === this.secondaryCurrency) {
       this.conversionRate = 1
       this.updateInputDisplay()
@@ -155,11 +155,11 @@ class ShoppingCalculator {
 
   handleNumberInput(value) {
     if (value === "," && this.currentInput.includes(",")) {
-      return // Éviter plusieurs virgules
+      return // Avoid multiple commas
     }
 
     if (this.currentInput.length < 10) {
-      // Limiter la longueur
+      // Limit the length
       this.currentInput += value
       this.updateInputDisplay()
     }
@@ -203,7 +203,7 @@ class ShoppingCalculator {
   updateInputDisplay() {
     this.inputField.value = this.currentInput || "0,00"
 
-    // Mise à jour de la conversion en temps réel
+    // Update real-time conversion
     if (this.primaryCurrency !== this.secondaryCurrency) {
       const value = this.parseValue(this.currentInput || "0")
       const converted = value * this.conversionRate
@@ -244,7 +244,7 @@ class ShoppingCalculator {
     this.total = this.history.reduce((sum, item) => sum + item.primary, 0)
     const convertedTotal = this.total * this.conversionRate
 
-    // Mise à jour de l'affichage du total
+    // Update total display
     this.totalPrimary.textContent = this.formatValue(this.total, this.primaryCurrency)
 
     if (this.primaryCurrency !== this.secondaryCurrency) {
@@ -254,7 +254,7 @@ class ShoppingCalculator {
       this.totalSecondary.style.display = "none"
     }
 
-    // Vérification du dépassement de budget
+    // Check budget limit
     this.checkBudgetLimit()
   }
 
@@ -267,7 +267,7 @@ class ShoppingCalculator {
     const convertedTotal = this.total * this.conversionRate
     const budgetInPrimaryCurrency = this.budgetLimit / this.conversionRate
 
-    // Déterminer quelle valeur utiliser pour la comparaison
+    // DDetermine which value to use for comparison
     const totalToCheck = this.primaryCurrency === this.secondaryCurrency ? this.total : convertedTotal
     const limitToCheck = this.primaryCurrency === this.secondaryCurrency ? budgetInPrimaryCurrency : this.budgetLimit
 
@@ -281,13 +281,13 @@ class ShoppingCalculator {
       warningDiv.className = "budget-warning"
 
       if (this.primaryCurrency === this.secondaryCurrency) {
-        // Même devise : afficher seulement une ligne
+        // Same currency: display only one line
         const excess = this.total - budgetInPrimaryCurrency
         warningDiv.innerHTML = `
         <div class="budget-warning-line">${translations[this.language].budgetExcess} ${this.formatValue(excess, this.primaryCurrency)}</div>
       `
       } else {
-        // Devises différentes : afficher les deux lignes
+        // Different currencies: display both lines
         const excessSecondary = convertedTotal - this.budgetLimit
         const excessPrimary = excessSecondary / this.conversionRate
         warningDiv.innerHTML = `
@@ -306,16 +306,16 @@ class ShoppingCalculator {
   }
 
   updateDisplay() {
-    // Mise à jour des labels de devise
+    // Update currency labels
     document.querySelector(".currency-label").textContent = this.primaryCurrency
     this.budgetCurrency.textContent = this.secondaryCurrency
 
-    // Mise à jour de l'affichage
+    // Update display
     this.updateInputDisplay()
     this.updateHistoryDisplay()
     this.updateTotal()
 
-    // Mise à jour des paramètres
+    // Update settings
     this.primaryCurrencySelect.value = this.primaryCurrency
     this.secondaryCurrencySelect.value = this.secondaryCurrency
     this.budgetLimitInput.value = this.budgetLimit
@@ -337,11 +337,11 @@ class ShoppingCalculator {
   }
 
   updateLanguage() {
-    // Mettre à jour les textes de l'interface
+    // Update interface texts
     document.querySelector(".header h1").textContent = translations[this.language].title
     document.querySelector(".settings-header h2").textContent = translations[this.language].settings
 
-    // Mettre à jour les labels des paramètres
+    // Update settings labels
     const labels = document.querySelectorAll(".setting-group label")
     labels[0].textContent = translations[this.language].primaryCurrency
     labels[1].textContent = translations[this.language].secondaryCurrency

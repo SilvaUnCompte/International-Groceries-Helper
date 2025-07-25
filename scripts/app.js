@@ -2,13 +2,13 @@ import { ShoppingCalculator } from "./calculator.js";
 
 let calculator
 
-// Initialisation de l'application
+// Initialize the application
 document.addEventListener("DOMContentLoaded", () => {
   calculator = new ShoppingCalculator()
   window.removeHistoryItem = (index) => calculator.removeHistoryItem(index)
 })
 
-// Prévenir le zoom sur double-tap sur mobile
+// Prevent zoom on double-tap on mobile
 let lastTouchEnd = 0
 document.addEventListener(
   "touchend",
@@ -22,19 +22,19 @@ document.addEventListener(
   false,
 )
 
-// Prévenir le scroll élastique sur iOS
+// Prevent elastic scroll on iOS
 document.addEventListener(
   "touchmove",
   (e) => {
     if (e.target.closest(".history-section")) {
-      return // Permettre le scroll dans l'historique
+      return // Allow scrolling in history
     }
     e.preventDefault()
   },
   { passive: false },
 )
 
-// Enregistrement du service worker
+// Service Worker registration
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('/service-worker.js')
