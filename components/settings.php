@@ -41,6 +41,14 @@
             </div>
 
             <div class="setting-group">
+                <label for="bankFee">Frais bancaires</label>
+                <div class="budget-input-group">
+                    <input type="number" id="bankFee" placeholder="3" step="0.01">
+                    <span class="budget-currency">%</span>
+                </div>
+            </div>
+
+            <div class="setting-group">
                 <label for="budgetLimit">Valeur plafond</label>
                 <div class="budget-input-group">
                     <input type="number" id="budgetLimit" placeholder="100" step="0.01">

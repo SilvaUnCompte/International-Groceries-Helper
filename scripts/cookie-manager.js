@@ -1,7 +1,7 @@
 // cookieManager.js
 
 const daysToExpire = new Date(2147483647 * 1000).toUTCString();
-
+const defaultBankFee = 0; // Default bank fee
 const defaultBudgetLimit = 1000; // Default budget limit
 const defaultLanguage = "en"; // Default language
 const defaultPrimaryCurrency = "EUR"; // Default primary currency
@@ -26,12 +26,14 @@ function setCookie(name, value) {
 }
 
 function initializeCookies() {
+    let valBankFee = ensureCookie("bankFee", defaultBankFee);
     let valBudgetLimit = ensureCookie("budgetLimit", defaultBudgetLimit);
     let valLanguage = ensureCookie("language", defaultLanguage);
     let valPrimaryCurrency = ensureCookie("primaryCurrency", defaultPrimaryCurrency);
     let valSecondaryCurrency = ensureCookie("secondaryCurrency", defaultSecondaryCurrency);
 
     return {
+        bankFee: valBankFee,
         budgetLimit: valBudgetLimit,
         language: valLanguage,
         primaryCurrency: valPrimaryCurrency,
