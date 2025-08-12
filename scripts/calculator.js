@@ -1,19 +1,19 @@
-import { initializeCookies, setCookie } from "./cookie-manager.js";
+import { initializeStorage, setStorage } from "./storage-manager.js";
 import { translations } from "./translations.js";
 
 class ShoppingCalculator {
 	constructor() {
 		this.currentInput = ""
-		this.history = []
 		this.total = 0
 		this.conversionRate = 1
 
-		let cookies = initializeCookies()
-		this.bankFee = Number.parseFloat(cookies.bankFee);
-		this.budgetLimit = Number.parseFloat(cookies.budgetLimit);
-		this.language = cookies.language;
-		this.primaryCurrency = cookies.primaryCurrency;
-		this.secondaryCurrency = cookies.secondaryCurrency;
+		let localStorageValues = initializeStorage()
+		this.bankFee = Number.parseFloat(localStorageValues.bankFee);
+		this.budgetLimit = Number.parseFloat(localStorageValues.budgetLimit);
+		this.language = localStorageValues.language;
+		this.primaryCurrency = localStorageValues.primaryCurrency;
+		this.secondaryCurrency = localStorageValues.secondaryCurrency;
+		this.history = localStorageValues.history;
 
 		this.initializeElements()
 		this.bindEvents()
@@ -92,32 +92,32 @@ class ShoppingCalculator {
 			this.updateDisplay()
 			this.updateHistoryDisplay()
 			this.updateCurrencyConversion()
-			setCookie("primaryCurrency", this.primaryCurrency)
+			setStorage("primaryCurrency", this.primaryCurrency)
 		})
 
 		this.secondaryCurrencySelect.addEventListener("change", () => {
 			this.secondaryCurrency = this.secondaryCurrencySelect.value
 			this.updateDisplay()
 			this.updateCurrencyConversion()
-			setCookie("secondaryCurrency", this.secondaryCurrency)
+			setStorage("secondaryCurrency", this.secondaryCurrency)
 		})
 
 		this.bankFeeInput.addEventListener("input", () => {
 			this.bankFee = Number.parseFloat(this.bankFeeInput.value) || 0
 			this.updateDisplay()
-			setCookie("bankFee", this.bankFee)
+			setStorage("bankFee", this.bankFee)
 		})
 
 		this.budgetLimitInput.addEventListener("input", () => {
 			this.budgetLimit = Number.parseFloat(this.budgetLimitInput.value) || 1000
 			this.updateDisplay()
-			setCookie("budgetLimit", this.budgetLimit)
+			setStorage("budgetLimit", this.budgetLimit)
 		})
 
 		this.languageSelect.addEventListener("change", () => {
 			this.language = this.languageSelect.value
 			this.updateLanguage()
-			setCookie("language", this.language)
+			setStorage("language", this.language)
 		})
 
 		// Physical keyboard (PC)
