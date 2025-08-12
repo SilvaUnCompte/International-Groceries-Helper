@@ -8,7 +8,8 @@
     <title>Calculatrice Courses</title>
     <link rel="icon" type="image/png" href="icons/icon-192.png">
     <link rel="manifest" href="manifest.json">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/popup.css">
 </head>
 
 <body>

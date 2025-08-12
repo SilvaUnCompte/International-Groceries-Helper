@@ -1,11 +1,11 @@
 import { initializeStorage, setStorage } from "./storage-manager.js";
 import { translations } from "./translations.js";
+import { newPopup } from "./popup.js";
 
 class ShoppingCalculator {
 	constructor() {
 		this.currentInput = ""
 		this.total = 0
-		this.conversionRate = 1
 
 		let localStorageValues = initializeStorage()
 		this.bankFee = Number.parseFloat(localStorageValues.bankFee);
@@ -13,6 +13,7 @@ class ShoppingCalculator {
 		this.language = localStorageValues.language;
 		this.primaryCurrency = localStorageValues.primaryCurrency;
 		this.secondaryCurrency = localStorageValues.secondaryCurrency;
+		this.conversionRate = localStorageValues.lastConversionRate;
 		this.history = localStorageValues.history;
 
 		this.initializeElements()
@@ -140,27 +141,33 @@ class ShoppingCalculator {
 		// If the currencies are identical, no need for conversion
 		if (this.primaryCurrency === this.secondaryCurrency) {
 			this.conversionRate = 1
+			setStorage("lastConversionRate", 1)
+
 			this.updateInputDisplay()
 			this.updateHistoryDisplay()
 			this.updateTotal()
 			return
 		}
 
+		const errorString = `Network issue, can't retrieve conversion rate. Keep using ${this.conversionRate} (${this.primaryCurrency} to ${this.secondaryCurrency})`
+
 		// API GET https://open.er-api.com/v6/latest/EUR
-		fetch(`https://open.er-api.com/v6/latest/${this.primaryCurrency}`)
+		fetch(`https://Xopen.er-api.com/v6/latest/${this.primaryCurrency}`)
 			.then(response => response.json())
 			.then(data => {
 				if (data.result === "success" && data.rates[this.secondaryCurrency]) {
 					this.conversionRate = data.rates[this.secondaryCurrency]
+					setStorage("lastConversionRate", this.conversionRate)
+					
 					this.updateInputDisplay()
 					this.updateHistoryDisplay()
 					this.updateTotal()
 				} else {
-					this.conversionRate = 1
+					newPopup(errorString, "error")
 				}
 			})
 			.catch(() => {
-				this.conversionRate = 1
+				newPopup(errorString, "error")
 			})
 	}
 
@@ -240,8 +247,8 @@ class ShoppingCalculator {
 						<div class="history-item">
 							<div class="history-content">
 								<div class="history-primary">${this.formatValue(item.value, this.primaryCurrency)}</div>
-								${this.isConversionNeeded() ? 
-									`<div class="history-secondary">
+								${this.isConversionNeeded() ?
+							`<div class="history-secondary">
 										${this.formatValue(convertedValue, this.secondaryCurrency)}
 									</div>` : ""}
 							</div>

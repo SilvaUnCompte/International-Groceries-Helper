@@ -2,6 +2,7 @@
 
 const defaultBankFee = 0; // Default bank fee
 const defaultBudgetLimit = 1000; // Default budget limit
+const defaultConversionRate = 1; // Never use
 const defaultLanguage = "en"; // Default language
 const defaultPrimaryCurrency = "EUR"; // Default primary currency
 const defaultSecondaryCurrency = "USD"; // Default secondary currency
@@ -30,6 +31,7 @@ function initializeStorage() {
     let valLanguage = ensureStorage("language", defaultLanguage);
     let valPrimaryCurrency = ensureStorage("primaryCurrency", defaultPrimaryCurrency);
     let valSecondaryCurrency = ensureStorage("secondaryCurrency", defaultSecondaryCurrency);
+    let valLastConversionRate = ensureStorage("lastConversionRate", defaultConversionRate);
     let valHistory = ensureStorage("history", []);
 
     return {
@@ -38,6 +40,7 @@ function initializeStorage() {
         language: valLanguage,
         primaryCurrency: valPrimaryCurrency,
         secondaryCurrency: valSecondaryCurrency,
+        lastConversionRate: valLastConversionRate,
         history: valHistory
     }
 }
