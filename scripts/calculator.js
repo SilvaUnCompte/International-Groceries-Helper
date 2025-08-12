@@ -152,7 +152,7 @@ class ShoppingCalculator {
 		const errorString = `Network issue, can't retrieve conversion rate. Keep using ${this.conversionRate} (${this.primaryCurrency} to ${this.secondaryCurrency})`
 
 		// API GET https://open.er-api.com/v6/latest/EUR
-		fetch(`https://Xopen.er-api.com/v6/latest/${this.primaryCurrency}`)
+		fetch(`https://open.er-api.com/v6/latest/${this.primaryCurrency}`)
 			.then(response => response.json())
 			.then(data => {
 				if (data.result === "success" && data.rates[this.secondaryCurrency]) {
