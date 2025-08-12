@@ -224,6 +224,9 @@ class ShoppingCalculator {
 	}
 
 	updateHistoryDisplay() {
+
+		setStorage("history", this.history)
+
 		if (this.history.length === 0) {
 			this.historySection.innerHTML = `<div class="history-placeholder">${translations[this.language].noEntries}</div>`
 			return

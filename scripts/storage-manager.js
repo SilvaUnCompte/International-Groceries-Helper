@@ -1,4 +1,4 @@
-// localStorageManager.js
+// storage-manager.js
 
 const defaultBankFee = 0; // Default bank fee
 const defaultBudgetLimit = 1000; // Default budget limit
@@ -30,7 +30,7 @@ function initializeStorage() {
     let valLanguage = ensureStorage("language", defaultLanguage);
     let valPrimaryCurrency = ensureStorage("primaryCurrency", defaultPrimaryCurrency);
     let valSecondaryCurrency = ensureStorage("secondaryCurrency", defaultSecondaryCurrency);
-    let valHistory = ensureStorage("shoppingHistory", []);
+    let valHistory = ensureStorage("history", []);
 
     return {
         bankFee: valBankFee,
