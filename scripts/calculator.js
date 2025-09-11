@@ -153,24 +153,34 @@ class ShoppingCalculator {
 		}
 
 		const errorString = `Network issue, can't retrieve conversion rate. Keep using ${this.conversionRate} (${this.conversionRateText}).`
+		const warnString = `Network issue, can't update conversion rate. Keep using ${this.conversionRate}. No worries, rate change very slowly.`
 
 		// API GET https://open.er-api.com/v6/latest/EUR
-		fetch(`https://open.er-api.com/v6/latest/${this.primaryCurrency}`)
+		fetch(`https://open.er-api.com/v6/latest/${this.primaryCurrency}`,
+			{ signal: AbortSignal.timeout(4000) })
 			.then(response => response.json())
 			.then(data => {
 				if (data.result === "success" && data.rates[this.secondaryCurrency]) {
 					this.conversionRate = data.rates[this.secondaryCurrency]
+					this.conversionRateText = `${this.primaryCurrency} -> ${this.secondaryCurrency}`
 					setStorage("lastConversionRate", this.conversionRate)
-					
-					this.updateInputDisplay()
-					this.updateHistoryDisplay()
-					this.updateTotal()
-				} else {
+					setStorage("lastConversionRateText", this.conversionRateText)
+				}
+				else throw "Unknow error :/"
+			})
+			.catch((e) => {
+				if (this.conversionRateText == `${this.primaryCurrency} -> ${this.secondaryCurrency}`)
+				{
+					newPopup(warnString, "warn")
+				}
+				else {
 					newPopup(errorString, "error")
 				}
 			})
-			.catch(() => {
-				newPopup(errorString, "error")
+			.then(() => {
+				this.updateInputDisplay()
+				this.updateHistoryDisplay()
+				this.updateTotal()
 			})
 	}
 

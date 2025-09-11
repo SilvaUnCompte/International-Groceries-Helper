@@ -18,7 +18,7 @@ function newPopup(text, popup_type) {
     close.onclick = () => delete_popup(popup);
     setTimeout(() => {
         delete_popup(popup);
-    }, 3500);
+    }, 5000);
 }
 
 function delete_popup(popup) {
