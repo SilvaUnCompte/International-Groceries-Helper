@@ -14,6 +14,7 @@ class ShoppingCalculator {
 		this.primaryCurrency = localStorageValues.primaryCurrency;
 		this.secondaryCurrency = localStorageValues.secondaryCurrency;
 		this.conversionRate = localStorageValues.lastConversionRate;
+		this.conversionRateText = localStorageValues.lastConversionRateText;
 		this.history = localStorageValues.history;
 
 		this.initializeElements()
@@ -141,7 +142,9 @@ class ShoppingCalculator {
 		// If the currencies are identical, no need for conversion
 		if (this.primaryCurrency === this.secondaryCurrency) {
 			this.conversionRate = 1
+			this.conversionRateText = `${this.primaryCurrency} -> ${this.secondaryCurrency}`
 			setStorage("lastConversionRate", 1)
+			setStorage("lastConversionRateText", `${this.primaryCurrency} -> ${this.secondaryCurrency}`)
 
 			this.updateInputDisplay()
 			this.updateHistoryDisplay()
@@ -149,7 +152,7 @@ class ShoppingCalculator {
 			return
 		}
 
-		const errorString = `Network issue, can't retrieve conversion rate. Keep using ${this.conversionRate}.`
+		const errorString = `Network issue, can't retrieve conversion rate. Keep using ${this.conversionRate} (${this.conversionRateText}).`
 
 		// API GET https://open.er-api.com/v6/latest/EUR
 		fetch(`https://open.er-api.com/v6/latest/${this.primaryCurrency}`)
