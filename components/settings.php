@@ -13,6 +13,7 @@
                     <option value="CAD">CAD - Canadian Dollar</option>
                     <option value="CHF">CHF - Swiss Franc</option>
                     <option value="CNH">CNH - Chinese Yuan (offshore)</option>
+                    <option value="CZK">CZK - Czech Koruna</option>
                     <option value="DKK">DKK - Danish Krone</option>
                     <option value="EUR">EUR - Euro</option>
                     <option value="GBP">GBP - Pound Sterling</option>
@@ -30,6 +31,7 @@
                     <option value="CAD">CAD - Canadian Dollar</option>
                     <option value="CHF">CHF - Swiss Franc</option>
                     <option value="CNH">CNH - Chinese Yuan (offshore)</option>
+                    <option value="CZK">CZK - Czech Koruna</option>
                     <option value="DKK">DKK - Danish Krone</option>
                     <option value="EUR">EUR - Euro</option>
                     <option value="GBP">GBP - Pound Sterling</option>
